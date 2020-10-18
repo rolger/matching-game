@@ -3,11 +3,7 @@ node('DOTNETCORE'){
 		checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/rolger/matching-game']]])
 	}
 	stage('Build'){
-		try{
-		sh 'dotnet build ConsoleApp1'
-		}finally{
-		archiveArtifacts artifacts: 'ConsoleApp1/*.*'
-		}
+		sh 'dotnet build MatchingGame'
 	}
 	stage('Test'){
 		echo 'Execute unit tests'
@@ -19,6 +15,6 @@ node('DOTNETCORE'){
 		echo 'Push to deployment'
 	}
 	stage('Archive'){
-		archiveArtifacts artifacts: 'ConsoleApp1/*.*'
+		archiveArtifacts artifacts: 'MatchingGame/*.*'
 	}
 }
