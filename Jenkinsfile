@@ -3,7 +3,9 @@ node('DOTNETCORE'){
 		checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/rolger/matching-game']]])
 	}
 	stage('Build'){
-		sh 'dotnet build MatchingGame'
+		cd MatchingGame
+		sh 'dotnet restore'
+		sh 'dotnet build MatchingGame.sln'
 	}
 	stage('Test'){
 		echo 'Execute unit tests'
