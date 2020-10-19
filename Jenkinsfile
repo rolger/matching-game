@@ -1,24 +1,14 @@
-node('DOTNET'){
-	stage('SCM'){
-		checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/rolger/matching-game']]])
-	}
-	stage('Build'){
-		sh 'ls -la'
-		dir('MatchingGame') {
-			sh 'dotnet restore'
-			sh 'dotnet build MatchingGame.sln'
+pipeline {
+	agent {
+		docker {
+			image 'mcr.microsoft.com/dotnet/framework/sdk:4.8'
+			label 'windows'
 		}
 	}
-	stage('Test'){
-		echo 'Execute unit tests'
-	}
-	stage('Package'){
-		echo 'Zip it up'
-	}
-	stage('Deploy'){
-		echo 'Push to deployment'
-	}
-	stage('Archive'){
-		archiveArtifacts artifacts: 'MatchingGame/*.*'
+	
+	stages {
+		stage('Build') {
+			bat 'msbuild'
+		}
 	}
 }
