@@ -24,7 +24,9 @@ pipeline{
             steps {
                 dir ('MatchingGame/bin/Release') {
                     zip zipFile: 'MatchingGame.zip'
+					
                 }
+				archiveArtifacts artifacts: '**/*'
             }
         }
     }
