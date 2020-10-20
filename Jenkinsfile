@@ -36,10 +36,9 @@ pipeline{
 					def myArtifactory = Artifactory.server 'my-artifactory'
 					
 					def buildInfo = myArtifactory.upload uploadSpec 
+					println buildInfo
 					
 					myArtifactory.publishBuildInfo buildInfo
-					
-					println buildInfo
 				}
             }
         }
