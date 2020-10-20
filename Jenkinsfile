@@ -28,7 +28,7 @@ pipeline{
 					  "files": [
 						{
 						  "pattern": "MatchingGame/MatchingGame/bin/Release/MatchingGame*.zip/MatchingGame/bin/Release/MatchingGame*.zip",
-						  "target": "local-repo/MatchingGame/"
+						  "target": "dev-local/MatchingGame/"
 						}
 					 ]
 					}"""
