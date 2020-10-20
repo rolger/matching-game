@@ -2,8 +2,6 @@ pipeline{
     agent {label 'windows'}
     
 	
-	def msbuild     = "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\MSBuild\\Current\\Bin\\MSBuild.exe"
-
     stages {
         
         stage('SCM'){
@@ -25,6 +23,7 @@ pipeline{
         stage('Build') {
             steps {
                 dir ('MatchingGame') {
+					def msbuild = "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\MSBuild\\Current\\Bin\\MSBuild.exe"
                 
 					bat 'dotnet restore'
 					bat 'nuget restore BigProject.sln'
