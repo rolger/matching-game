@@ -3,6 +3,14 @@ pipeline{
     
 	
     stages {
+
+		stage ('Clean') {
+			steps {
+                dir ('MatchingGame') {
+					deleteDir()
+				}
+			}
+		}
         
         stage('SCM'){
             steps {
@@ -11,19 +19,11 @@ pipeline{
 	    }
 		
 	
-		stage ('Clean') {
-			steps {
-                dir ('MatchingGame') {
-					deleteDir()
-				}
-				bat "dotnet clean"
-			}
-		}
 	
         stage('Build') {
             steps {
                 dir ('MatchingGame') {
-					// def msbuild = "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\MSBuild\\Current\\Bin\\MSBuild.exe\""
+					// def msbuild = '"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\MSBuild\\Current\\Bin\\MSBuild.exe\"'
                 
 					bat 'dotnet restore'
 					bat 'nuget restore BigProject.sln'
