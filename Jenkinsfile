@@ -28,7 +28,7 @@ pipeline{
 					  "files": [
 						{
 						  "pattern": "MatchingGame/MatchingGame/bin/Release/MatchingGame*.zip/",
-						  "target": "/dev-local/MatchingGame/"
+						  "target": "dev-local/MatchingGame/"
 						}
 					 ]
 					}"""
@@ -36,8 +36,6 @@ pipeline{
 					def myArtifactory = Artifactory.server 'my-artifactory'
 					
 					def buildInfo = myArtifactory.upload uploadSpec 
-					println buildInfo
-					
 					myArtifactory.publishBuildInfo buildInfo
 				}
             }
