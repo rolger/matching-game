@@ -19,15 +19,18 @@ pipeline{
             steps {
 			
                 dir ('MatchingGame/MatchingGame/bin/Release') {
-                    //zip zipFile: 'MatchingGame.zip'
 					script {
 						def commitCount = bat(script: 'git rev-list --count HEAD', returnStdout: true).split('\\r?\\n')[2]
 						println "git commit count $commitCount"
 
 						def newVersion = "1.0." + commitCount
 						println "New computed version $newVersion"
+
+
+						println "C:\\Program Files\\7-Zip\\7z.exe a  -r MatchingGame_v$newVersion.zip"
+						println 'C:\\Program Files\\7-Zip\\7z.exe a  -r MatchingGame_v$newVersion.zip'
 						
-						println "\"C:\\Program Files\\7-Zip\\7z.exe\" a  -r MatchingGame_v$newVersion.zip"
+						// println "\"C:\\Program Files\\7-Zip\\7z.exe\" a  -r MatchingGame_v$newVersion.zip"
 					}
                 }
 				// archiveArtifacts artifacts: 'MatchingGame/MatchingGame/bin/Release/MatchingGame*.zip'
