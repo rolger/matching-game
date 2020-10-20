@@ -28,11 +28,10 @@ pipeline{
 						
 						def commitCount = bat(script: 'git rev-list --count HEAD', returnStdout: true)
 						def commitHash = bat(script: 'git rev-parse HEAD', returnStdout: true)
-						println "git commit count \$commitCount commmit hash \$commitHash"
+						println "git commit count $commitCount commmit hash $commitHash"
 
-						def newVersion = "1.0." + commitCount + branch
-						newVersion = newVersion.replaceAll("\\\\s", "")
-						println "New computed version \$newVersion"
+						def newVersion = "1.0." + commitCount
+						println "New computed version $newVersion"
 						
 						input 'continue?'
 
