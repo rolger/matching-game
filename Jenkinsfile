@@ -26,9 +26,10 @@ pipeline{
 						def newVersion = "1.0." + commitCount
 						println "New computed version $newVersion"
 
+						input 'cont'
 
-						println "C:\\Program Files\\7-Zip\\7z.exe a  -r MatchingGame_v$newVersion.zip"
 						println 'C:\\Program Files\\7-Zip\\7z.exe a  -r MatchingGame_v$newVersion.zip'
+						println "C:\\Program Files\\7-Zip\\7z.exe a  -r MatchingGame_v$newVersion.zip"
 			
 						input 'cont'
 						// println "\"C:\\Program Files\\7-Zip\\7z.exe\" a  -r MatchingGame_v$newVersion.zip"
