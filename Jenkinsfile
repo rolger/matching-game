@@ -21,7 +21,7 @@ pipeline{
                 dir ('MatchingGame/MatchingGame/bin/Release') {
                     //zip zipFile: 'MatchingGame.zip'
 					script {
-						def commitCount = bat(script: 'git rev-list --count HEAD', returnStdout: true).split('\\r?\\n')[1]
+						def commitCount = bat(script: 'git rev-list --count HEAD', returnStdout: true).split('\\r?\\n')[2]
 						println "git commit count $commitCount"
 
 						def newVersion = "1.0." + commitCount
