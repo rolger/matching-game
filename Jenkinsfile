@@ -27,8 +27,6 @@ pipeline{
 						def newVersion = "1.0." + commitCount
 						println "New computed version $newVersion"
 						
-						input 'continue?'
-
 						bat '"C:\\Program Files\\7-Zip\\7z.exe" a  -r MatchingGame_v\${newVersion}.zip'
 					}
                 }
