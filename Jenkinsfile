@@ -24,18 +24,19 @@ pipeline{
 					}
 					archiveArtifacts artifacts: 'MatchingGame/MatchingGame/bin/Release/MatchingGame*.zip'
 					
+
+					def myArtifactory = Artifactory.server 'my-artifactory'
+					server.bypassProxy = true
 					def uploadSpec = """{
 					  "files": [
 						{
-						  "pattern": "MatchingGame/MatchingGame/bin/Release/MatchingGame*.zip/",
+						  "pattern": "MatchingGame/MatchingGame/bin/Release/MatchingGame*.zip",
 						  "target": "dev-local/MatchingGame/"
 						}
 					 ]
 					}"""
 					
-					def myArtifactory = Artifactory.server 'my-artifactory'
-					
-					def buildInfo = myArtifactory.upload uploadSpec 
+					def buildInfo = myArtifactory.upload(uploadSpec)
 					myArtifactory.publishBuildInfo buildInfo
 				}
             }
