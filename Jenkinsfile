@@ -29,10 +29,10 @@ pipeline{
 						
 						input 'continue?'
 
-						bat '"C:\\Program Files\\7-Zip\\7z.exe" a  -r MatchingGame_v${newVersion}.zip'
+						bat '"C:\\Program Files\\7-Zip\\7z.exe" a  -r MatchingGame_v\${newVersion}.zip'
 					}
                 }
-				archiveArtifacts artifacts: 'MatchingGame/MatchingGame/bin/Release/MatchingGame.zip'
+				archiveArtifacts artifacts: 'MatchingGame/MatchingGame/bin/Release/MatchingGame*.zip'
             }
         }
     }
