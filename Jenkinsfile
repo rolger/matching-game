@@ -26,12 +26,12 @@ pipeline{
 						def newVersion = "v1.0." + commitCount + ".zip"
 						println "New computed version $newVersion"
 
-						println "\"C:\\Program Files\\7-Zip\\7z.exe\" a  -r MatchingGame_$newVersion"
+						bat "\"C:\\Program Files\\7-Zip\\7z.exe\" a  -r MatchingGame_$newVersion"
 			
 						// println "\"C:\\Program Files\\7-Zip\\7z.exe\" a  -r MatchingGame_v$newVersion.zip"
 					}
                 }
-				// archiveArtifacts artifacts: 'MatchingGame/MatchingGame/bin/Release/MatchingGame*.zip'
+				archiveArtifacts artifacts: 'MatchingGame/MatchingGame/bin/Release/MatchingGame*.zip'
             }
         }
     }
