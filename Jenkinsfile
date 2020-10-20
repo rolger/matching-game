@@ -26,7 +26,6 @@ pipeline{
 					
 
 					def myArtifactory = Artifactory.server 'my-artifactory'
-					server.bypassProxy = true
 					def uploadSpec = """{
 					  "files": [
 						{
