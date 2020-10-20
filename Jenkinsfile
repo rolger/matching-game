@@ -33,8 +33,10 @@ pipeline{
 					 ]
 					}"""
 					
-					def server = Artifactory.server 'my-artifactory'
-					server.upload spec: uploadSpec 
+					def myArtifactory = Artifactory.server 'my-artifactory'
+					
+					def buildInfo = myArtifactory.upload uploadSpec 
+					myArtifactory.publishBuildInfo buildInfo1
 				}
             }
         }
