@@ -21,14 +21,8 @@ pipeline{
                 dir ('MatchingGame/MatchingGame/bin/Release') {
                     //zip zipFile: 'MatchingGame.zip'
 					script {
-						def disk_size = bat(script: "dir", returnStdout: true)
-						println("disk_size = ${disk_size}")
-					
-						input 'continue?'
-						
-						def commitCount = bat(script: 'git rev-list --count HEAD', returnStdout: true)
-						def commitHash = bat(script: 'git rev-parse HEAD', returnStdout: true)
-						println "git commit count $commitCount commmit hash $commitHash"
+						def commitCount = bat(script: 'git rev-list --count HEAD', returnStdout: true).split('\\r?\\n')[1]
+						println "git commit count $commitCount"
 
 						def newVersion = "1.0." + commitCount
 						println "New computed version $newVersion"
