@@ -3,22 +3,6 @@ pipeline{
 	
     stages {
 
-		stage ('Clean') {
-			steps {
-				bat "dir"
-				bat "dir MatchingGame"
-                dir ('MatchingGame') {
-					deleteDir()
-				}
-			}
-		}
-        
-        stage('SCM'){
-            steps {
-		        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/rolger/matching-game']]])
-            }
-	    }
-
         stage('Build') {
             steps {
                 dir ('MatchingGame') {
@@ -33,11 +17,14 @@ pipeline{
         
         stage('Archive') {
             steps {
-                dir ('MatchingGame/bin/Release') {
+			
+                dir ('MatchingGame/MatchingGame/bin/Release') {
                     //zip zipFile: 'MatchingGame.zip'
+					
+					bat "dir"
 					bat '"C:\\Program Files\\7-Zip\\7z.exe" a  -r MatchingGame.zip'
                 }
-				archiveArtifacts artifacts: '**'
+				archiveArtifacts artifacts: 'MatchingGame/MatchingGame/bin/Release/MatchingGame.zip'
             }
         }
     }
