@@ -27,7 +27,7 @@ pipeline{
 					def uploadSpec = """{
 					  "files": [
 						{
-						  "pattern": "MatchingGame/MatchingGame/bin/Release/MatchingGame*.zip/MatchingGame/bin/Release/MatchingGame*.zip",
+						  "pattern": "MatchingGame/MatchingGame/bin/Release/MatchingGame*.zip/",
 						  "target": "dev-local/MatchingGame/"
 						}
 					 ]
