@@ -23,14 +23,11 @@ pipeline{
 						def commitCount = bat(script: 'git rev-list --count HEAD', returnStdout: true).split('\\r?\\n')[2]
 						println "git commit count $commitCount"
 
-						def newVersion = "1.0." + commitCount
+						def newVersion = "v1.0." + commitCount + ".zip"
 						println "New computed version $newVersion"
 
-						input 'cont'
-
-						println "\"C:\\Program Files\\7-Zip\\7z.exe\" a  -r MatchingGame_v$newVersion"
+						println "\"C:\\Program Files\\7-Zip\\7z.exe\" a  -r MatchingGame_$newVersion"
 			
-						input 'cont'
 						// println "\"C:\\Program Files\\7-Zip\\7z.exe\" a  -r MatchingGame_v$newVersion.zip"
 					}
                 }
