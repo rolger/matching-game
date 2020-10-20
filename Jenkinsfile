@@ -24,7 +24,7 @@ pipeline{
 						def disk_size = bat(script: "dir", returnStdout: true)
 						println("disk_size = ${disk_size}")
 					
-						input
+						input 'continue?'
 						
 						def commitCount = bat(script: 'git rev-list --count HEAD', returnStdout: true)
 						def commitHash = bat(script: 'git rev-parse HEAD', returnStdout: true)
@@ -34,7 +34,7 @@ pipeline{
 						newVersion = newVersion.replaceAll("\\\\s", "")
 						println "New computed version \$newVersion"
 						
-						input
+						input 'continue?'
 
 						bat '"C:\\Program Files\\7-Zip\\7z.exe" a  -r MatchingGame_v${newVersion}.zip'
 					}
