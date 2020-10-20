@@ -5,6 +5,8 @@ pipeline{
 
 		stage ('Clean') {
 			steps {
+				bat "dir"
+				bat "dir MatchingGame"
                 dir ('MatchingGame') {
 					deleteDir()
 				}
