@@ -24,7 +24,6 @@ pipeline{
 					}
 					archiveArtifacts artifacts: 'MatchingGame/MatchingGame/bin/Release/MatchingGame*.zip'
 					
-
 					def myArtifactory = Artifactory.server 'my-artifactory'
 					def uploadSpec = """{
 					  "files": [
@@ -35,7 +34,7 @@ pipeline{
 					 ]
 					}"""
 					
-					def buildInfo = myArtifactory.upload(uploadSpec)
+					def buildInfo = myArtifactory.upload uploadSpec
 					myArtifactory.publishBuildInfo buildInfo
 				}
             }
