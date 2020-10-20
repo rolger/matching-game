@@ -25,6 +25,18 @@ pipeline{
 					}
                 }
 				archiveArtifacts artifacts: 'MatchingGame/MatchingGame/bin/Release/MatchingGame*.zip'
+				
+				def uploadSpec = """{
+				  "files": [
+					{
+					  "pattern": "MatchingGame/MatchingGame/bin/Release/MatchingGame*.zip/MatchingGame/bin/Release/MatchingGame*.zip",
+					  "target": "local-repo/MatchingGame/"
+					}
+				 ]
+				}"""
+				
+				def server = Artifactory.server 'my-artifactory'
+				server.upload spec: uploadSpec 
             }
         }
     }
