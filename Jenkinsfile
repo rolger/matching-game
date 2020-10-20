@@ -32,7 +32,7 @@ pipeline{
 						println "MatchingGame_v$newVersion"
 						
 						
-						// println "C:\\Program Files\\7-Zip\\7z.exe a  -r MatchingGame_v$newVersion.zip"
+						println "C:\\Program Files\\7-Zip\\7z.exe a  -r MatchingGame_v$newVersion"
 			
 						input 'cont'
 						// println "\"C:\\Program Files\\7-Zip\\7z.exe\" a  -r MatchingGame_v$newVersion.zip"
