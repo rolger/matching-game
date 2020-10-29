@@ -36,7 +36,6 @@ pipeline{
 					
 					def buildInfo = myArtifactory.upload uploadSpec
 					myArtifactory.publishBuildInfo buildInfo
-					
 				}
             }
         }
